@@ -1,0 +1,91 @@
+
+ 
+# Logs
+backend/logs
+backend/*.log
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
+backend/lerna-debug.log*
+
+backend/node_modules/
+backend/.env
+backend/config/config.env
+backend/config/development.js
+backend/config/production.js
+
+backend/package-lock.json
+
+# File Upload ignore
+backend/!public/uploads/.gitkeep
+backend/public/uploads/*
+
+# Optional npm cache directory
+backend/.npm
+
+# Optional eslint cache
+backend/.eslintcache
+
+backend/.DS_Store
+
+backend/.idea
+backend/.vscode
+
+# Debug log from npm
+backend/npm-debug.log
+
+
+# Compiled binary addons (http://nodejs.org/api/v1/addons.html)
+backend/build/Release
+
+# parcel-bundler cache (https://parceljs.org/)
+backend/.cache
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/frontend/dist
+/frontend/tmp
+/frontend/out-tsc
+# Only exists if Bazel was run
+/frontend/bazel-out
+
+# dependencies
+/frontend/node_modules
+
+# profiling files
+/frontend/chrome-profiler-events*.json
+/frontend/speed-measure-plugin*.json
+
+# IDEs and editors
+/frontend/.idea
+/frontend/.project
+/frontend/.classpath
+/frontend/.c9/
+/frontend/*.launch
+/frontend/.settings/
+/frontend/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/frontend/.sass-cache
+/frontend/connect.lock
+/frontend/coverage
+/frontend/libpeerconnection.log
+/frontend/npm-debug.log
+/frontend/yarn-error.log
+/frontend/testem.log
+/frontend/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+/frontend/package-lock.json
