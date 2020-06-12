@@ -29,10 +29,10 @@ const authorizationMiddleware = () => {
         'Unauthorized User',
         { msg: 'Invalid Credentials No Payload' },
         null,
-        403,
+        403
       );
     }
   };
 };
 
-module.exports = authorizationMiddleware;
+module.exports = { authorizationMiddleware };

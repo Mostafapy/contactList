@@ -9,10 +9,12 @@ const ContactSchema = new mongoose.Schema(
     phoneNumber: {
       type: String,
       required: [true, 'Please add a phoneNumber'],
+      unique: true,
     },
     address: {
       type: String,
       required: [true, 'Please add an address'],
+      unique: true,
     },
     notes: {
       type: String,
@@ -27,7 +29,7 @@ const ContactSchema = new mongoose.Schema(
       default: Date.now(),
     },
   },
-  { versionKey: false },
+  { versionKey: false }
 );
 
 module.exports = mongoose.model('contact', ContactSchema);
