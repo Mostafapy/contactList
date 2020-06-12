@@ -19,7 +19,7 @@ const login = async (req, res) => {
     // Check for username and password
     if (!username && !password) {
       logger.error(
-        '@login() [error: please provide an email and password]'.red
+        '@login() [error: please provide an email and password]'.red,
       );
 
       return res
@@ -30,14 +30,14 @@ const login = async (req, res) => {
             'please provide an email and password',
             { msg: 'please provide an email and password' },
             null,
-            400
-          )
+            400,
+          ),
         );
     }
 
     // Check for user
     const user = users.filter(
-      (usr) => usr.username === username && usr.password === password
+      (usr) => usr.username === username && usr.password === password,
     );
 
     if (!user) {
@@ -51,8 +51,8 @@ const login = async (req, res) => {
             'Invalid Credentials',
             { msg: 'User is not found' },
             null,
-            401
-          )
+            401,
+          ),
         );
     }
 
@@ -61,7 +61,7 @@ const login = async (req, res) => {
       jwtConfig.secret,
       {
         expiresIn: jwtConfig.expireIn,
-      }
+      },
     );
 
     return res

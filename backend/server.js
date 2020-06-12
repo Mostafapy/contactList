@@ -42,8 +42,8 @@ if (appConfig.nodeEnv === 'development') {
         '-',
         tokens['response-time'](req, res),
         'ms',
-      ].join(' ')
-    )
+      ].join(' '),
+    ),
   );
 }
 
@@ -58,7 +58,7 @@ const port = appConfig.port || '3000';
 
 // Listen
 const server = app.listen(port, () =>
-  logger.log(`App Listen Successfully To Port ${port}`.yellow.bold)
+  logger.log(`App Listen Successfully To Port ${port}`.yellow.bold),
 );
 
 // Unhandled Promise Rejection Handler
