@@ -1,9 +1,9 @@
 require('colors');
 const jwt = require('jsonwebtoken');
-/* Models */
-const UserModel = require('./../models/user.model');
 
 const jwtConfig = require('config').get('jwt');
+
+const users = require('./../_data/users');
 
 const logger = require('./../utils/logger.util')('Controllers:AuthController');
 const { createResponse } = require('./../utils/response.util');
@@ -11,6 +11,7 @@ const { createResponse } = require('./../utils/response.util');
 // @desc Login User
 // @route POST /api/v1/auth/login
 // @access Public
+// eslint-disable-next-line max-lines-per-function
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -18,7 +19,7 @@ const login = async (req, res) => {
     // Check for username and password
     if (!username && !password) {
       logger.error(
-        '@login() [error: please provide an email and password]'.red,
+        '@login() [error: please provide an email and password]'.red
       );
 
       return res
@@ -29,13 +30,15 @@ const login = async (req, res) => {
             'please provide an email and password',
             { msg: 'please provide an email and password' },
             null,
-            400,
-          ),
+            400
+          )
         );
     }
 
     // Check for user
-    const user = await UserModel.findOne({ username, password });
+    const user = users.filter(
+      (usr) => usr.username === username && usr.password === password
+    );
 
     if (!user) {
       logger.error('@login() [error: User is not found]'.red);
@@ -48,17 +51,17 @@ const login = async (req, res) => {
             'Invalid Credentials',
             { msg: 'User is not found' },
             null,
-            401,
-          ),
+            401
+          )
         );
     }
 
     const token = jwt.sign(
-      { id: user._id, username: user.username, password: user.password },
+      { id: user.id, username: user.username, password: user.password },
       jwtConfig.secret,
       {
         expiresIn: jwtConfig.expireIn,
-      },
+      }
     );
 
     return res
