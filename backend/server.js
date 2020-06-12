@@ -5,6 +5,7 @@ dotenv.config({ path: './config/development.js' });
 const express = require('express');
 const morgan = require('morgan');
 const config = require('config');
+const cors = require('cors');
 
 const logger = require('./utils/logger.util')('Server');
 
@@ -27,6 +28,8 @@ const app = express();
 
 app.use(express.json());
 
+app.use(cors());
+
 if (appConfig.nodeEnv === 'development') {
   app.use(
     morgan((tokens, req, res) =>
@@ -39,8 +42,8 @@ if (appConfig.nodeEnv === 'development') {
         '-',
         tokens['response-time'](req, res),
         'ms',
-      ].join(' '),
-    ),
+      ].join(' ')
+    )
   );
 }
 
@@ -55,7 +58,7 @@ const port = appConfig.port || '3000';
 
 // Listen
 const server = app.listen(port, () =>
-  logger.log(`App Listen Successfully To Port ${port}`.yellow.bold),
+  logger.log(`App Listen Successfully To Port ${port}`.yellow.bold)
 );
 
 // Unhandled Promise Rejection Handler
