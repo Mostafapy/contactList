@@ -3,7 +3,7 @@ const contactModel = require('./../models/contact.model');
 const { createResponse } = require('./../utils/response.util');
 
 const logger = require('./../utils/logger.util')(
-  'Controllers:ContactController'
+  'Controllers:ContactController',
 );
 
 const addContact = async (req, res) => {
@@ -95,7 +95,7 @@ const updateContact = async (req, res) => {
         notes,
         updatedBy: id,
       },
-      { name, phoneNumber, address }
+      { name, phoneNumber, address },
     );
 
     return res
